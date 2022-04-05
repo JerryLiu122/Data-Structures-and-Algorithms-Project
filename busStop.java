@@ -1,4 +1,4 @@
-package functionalityA;
+
 public class busStop {
 	
 	public int busStopId;
