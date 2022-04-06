@@ -14,27 +14,22 @@ public class busJourney
 	        validData = new ArrayList<>();
 	        readStopTimes(stop_times);
 	    }
-
 	    public void readStopTimes(File stop_times) throws IOException {
 	        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(stop_times))) 
 	        {
 				String string;
-				int lineCount = 0;
-				try 
-				{
+				int count = 0;
 				    while ((string = bufferedReader.readLine()) != null) 
 				    {
 				        String[] line = string.split(",");
-				        int emptyCodeInt = -1;
-				        float emptyCodeFloat = -1;
-				        if (lineCount != 0) {
-				            int trip_id = emptyCodeInt;
-				            int stop_id = emptyCodeInt;
-				            int stop_sequence = emptyCodeInt;
-				            int stop_headsign = emptyCodeInt;
-				            int pickup_type = emptyCodeInt;
-				            int drop_off_type = emptyCodeInt;
-				            float shape_dist_traveled = emptyCodeFloat;
+				        if (count != 0) {
+				            int trip_id = -1;
+				            int stop_id = -1;
+				            int stop_sequence = -1;
+				            int stop_headsign = -1;
+				            int pickup_type = -1;
+				            int drop_off_type = -1;
+				            float shape_dist_traveled = -1;
 
 				            String arrival_time = line[1];
 				            String departure_time = line[2];
@@ -57,7 +52,7 @@ public class busJourney
 				            }
 				            if (!line[6].equals("")) 
 				            {
-				                pickup_type = Integer.parseInt(line[6]);
+				               pickup_type = Integer.parseInt(line[6]);
 				            }
 				            if (!line[7].equals("")) 
 				            {
@@ -69,40 +64,34 @@ public class busJourney
 				            }
 				            if (isTimeValid(arrival_time) && isTimeValid(departure_time)) 
 				            {
-				                validData.add(new busJourneyInfo(trip_id, arrival_time, departure_time, stop_id, stop_sequence,
-				                        stop_headsign, pickup_type, drop_off_type, shape_dist_traveled));
+				                validData.add(new busJourneyInfo(trip_id, arrival_time, departure_time, stop_id, stop_sequence, stop_headsign, pickup_type, drop_off_type, shape_dist_traveled));
 				            }
 				        }
-				        lineCount++;
+				        count++;
 				    }
-				} catch (Exception e) {
-				    System.out.println(e);
-				}
-				System.out.println("Reading Stop Times Complete Line Count - " + lineCount);
+				
+				System.out.println("Completed reading Stop time " + count + " times.");
 			}
 	    }
 
 	    public static boolean isTimeValid(String time) {
-	        final int MAX_HOURS = 23;
-	        final int MAX_MINUTES = 59;
-	        final int MAX_SECONDS = 59;
+	        final int MAX_H = 23;
+	        final int MAX_MIN = 59;
+	        final int MAX_SEC = 59;
 	        String time_without_space = time.replaceAll("\\s", "");
 	        String[] individualParts = time_without_space.split(":");
-	        int hours = 0;
-	        int minutes = 0;
-	        int seconds = 0;
-	        try {
-	            hours = Integer.parseInt(individualParts[0]);
-	            minutes = Integer.parseInt(individualParts[1]);
-	            seconds = Integer.parseInt(individualParts[2]);
-	        } catch (Exception e) {
-	   
-	            return false;
+	        int hours = Integer.parseInt(individualParts[0]);
+	        int minutes = Integer.parseInt(individualParts[1]);
+	        int seconds = Integer.parseInt(individualParts[2]);	       
+	        if((hours<=MAX_H)&&(minutes<=MAX_MIN)&&(seconds<=MAX_SEC)) 
+	        {
+	        	return true;
 	        }
-	        if((hours<=MAX_HOURS)&&(minutes<=MAX_MINUTES)&&(seconds<=MAX_SECONDS))
-	            return true;
-	        else
-	            return false;
+	        else 
+	        {
+	        	return false;
+	        }
+	            
 	    }
 
 }
