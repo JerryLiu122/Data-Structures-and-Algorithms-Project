@@ -1,27 +1,31 @@
 package functionalityA;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class functionalityA {
 	public static busStopConnect routes;
-    public static busJourney trips;
+    public static busJourney journey;
 
-    public static void setupGraph(File stops, File stop_times, File transfers) throws IOException {
+    public static void setupGraph(File stops, File stop_times, File transfers) throws Exception {
         System.out.println("Setting up Graph");
 
         routes = new busStopConnect(stops, transfers);
-        trips = new busJourney(stop_times);
+        journey = new busJourney(stop_times);
 
-        for (int t = 1; t < trips.validData.size(); t++) {
-        	busJourneyInfo trip1 = trips.validData.get(t - 1);
-        	busJourneyInfo trip2 = trips.validData.get(t);
-            int cost = 1;
-            if (trip1.trip_id == trip2.trip_id) {
-                busStopConnect.makeConnection(trip1.stop_id, trip2.stop_id, cost);
+        int index = 1;
+        while(index < journey.validData.size()) 
+        {
+        	busJourneyInfo journey1 = journey.validData.get(index - 1);
+        	busJourneyInfo journey2 = journey.validData.get(index);
+            int count = 1;
+            if (journey1.trip_id == journey2.trip_id) 
+            {
+                busStopConnect.makeConnection(journey1.stop_id, journey2.stop_id, count);
             }
+            index++;
         }
-        System.out.println("Finishing setting graph");
+        System.out.println("Graph setting have finished");
 
     }
 
@@ -29,25 +33,36 @@ public class functionalityA {
         ArrayList<Integer> shortestPath = busStopConnect.getShortestPath(fromStopID, toStopID);
         double shortestCost = busStopConnect.getShortestPathCost();
 
-        if (shortestCost == Double.POSITIVE_INFINITY) {
-            System.out.println("No route from from " + fromStopID + " to " + toStopID);
-        } else if (shortestCost == Double.NEGATIVE_INFINITY) {
-            System.out.println("both are same");
-        } else if (shortestCost == -1.0) {
+        if (shortestCost == Double.POSITIVE_INFINITY) 
+        {
+            System.out.println("There is no route from from " + fromStopID + " to " + toStopID);
+        } 
+        else if (shortestCost == Double.NEGATIVE_INFINITY) 
+        {
+            System.out.println("Departure stop and destination stop shouldn't be same");
+        } 
+        else if (shortestCost == -1.0) 
+        {
             System.out.println("Invalid input");
-        } else {
+        } 
+        else 
+        {
             System.out.println("Cost from " + fromStopID + " to " + toStopID + " is: " + shortestCost);
-            for(int i = 0; i < shortestPath.size();i++){
-                System.out.print(shortestPath.get(i));
-                if(i != shortestPath.size() - 1){
+            int i = 0;
+            while(i < shortestPath.size()) 
+            {
+            	System.out.print(shortestPath.get(i));
+                if(i != shortestPath.size() - 1)
+                {
                     System.out.print(" -> ");
                 }
+                i++;
             }
             System.out.println();
         }
     }
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		String stops_times_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/stop_times.txt";
         File stop_times = new File(stops_times_path);
@@ -59,10 +74,15 @@ public class functionalityA {
         File transfers = new File(transfers_path);
 
         setupGraph(stops, stop_times, transfers);
+        
+        try (Scanner input = new Scanner(System.in)) {
+			System.out.println("Please enter the departure stop ID");
+			int fromStopID = input.nextInt();
+			System.out.println("Please enter the destination stop ID");
+			int toStopID = input.nextInt();
 
-        int fromStopID = 71;
-        int toStopID = 646;
-        printShortestPathInfo(fromStopID, toStopID);
+			printShortestPathInfo(fromStopID, toStopID);
+		}
 
 
 	}
