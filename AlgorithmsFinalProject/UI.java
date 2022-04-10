@@ -48,7 +48,7 @@ public class UI
 						            String transfers_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/transfers.txt";
 						            File transfers = new File(transfers_path);
 						            functionalityA.setUpGraph(stops, stop_times, transfers);
-						    		functionalityA.setUpGraph(stops, stop_times, transfers);
+						    	    functionalityA.printShortestPath(fromStopID, toStopID);
 						        }
 						    	else 
 						    	{
