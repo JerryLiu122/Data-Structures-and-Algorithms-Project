@@ -1,7 +1,6 @@
 package functionalityA;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class functionalityA {
 	public static busStopConnect routes;
