@@ -47,8 +47,8 @@ public class UI
 						            File stops = new File(stops_path);
 						            String transfers_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/transfers.txt";
 						            File transfers = new File(transfers_path);
-						            functionalityA.setupGraph(stops, stop_times, transfers);
-						    		functionalityA.printShortestPathInfo(fromStopID, toStopID);
+						            functionalityA.setUpGraph(stops, stop_times, transfers);
+						    		functionalityA.setUpGraph(stops, stop_times, transfers);
 						        }
 						    	else 
 						    	{
@@ -77,7 +77,7 @@ public class UI
 					        }
 							String stops_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/stops.txt";
 					        File stops = new File(stops_path);
-					        ArrayList<String> stopNames = functionalityB.getStop(stops);
+					        ArrayList<String> stopNames = functionalityB.getBusStop(stops);
 					        functionalityB.insertStopName(stopNames);
 					        String[] HastingsSearch = functionalityB.STOP_NAME.search(stopName);
 					        for(String x: HastingsSearch) 
@@ -92,10 +92,6 @@ public class UI
 					{
 						exit = true;
 					}
-				    else
-				    {
-					System.out.print("Input error!" + "\n" + "Please enter a number :" + "\n");
-				    }
 			    }
 			}
 			

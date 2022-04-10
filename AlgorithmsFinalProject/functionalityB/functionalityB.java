@@ -51,44 +51,44 @@ public class functionalityB {
         }
     }
 
-    public static ArrayList<String> getStop(File filename) throws IOException 
+    public static ArrayList<String> getBusStop(File filename) throws IOException 
     {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         String string;
-        ArrayList<String> stopNames = new ArrayList<String>();
+        ArrayList<String> busStopNames = new ArrayList<String>();
         while ((string = bufferedReader.readLine()) != null) 
         {
             String[] line = string.split(",");
             if (!line[2].equals("stop_name")) 
             {
                 String meaningfulName = makeSence(line[2]);
-                stopNames.add(meaningfulName);
+                busStopNames.add(meaningfulName);
             }
         }
         bufferedReader.close();
-        return stopNames;
+        return busStopNames;
     }
 
     public static void printStation(ArrayList<String> stopNames) 
     {
-        ArrayList<String> stopNamesUniques = new ArrayList<String>();
+        ArrayList<String> busStopNamesUniques = new ArrayList<String>();
         int duplicateCount = 0;
         System.out.println("Duplicate Stop Names");
         for (String x : stopNames) 
         {
-            if (stopNamesUniques.contains(x)) 
+            if (busStopNamesUniques.contains(x)) 
             {
                 duplicateCount++;
                 System.out.println(duplicateCount + " " + x);
             } 
             else
             {
-                stopNamesUniques.add(x);
+                busStopNamesUniques.add(x);
             }
         }
     }
 
-    public static Map<String, ArrayList<String>> createDetails(File filename) throws IOException 
+    public static Map<String, ArrayList<String>> createMap(File filename) throws IOException 
     {
 
         int indexOfStopName = 2;

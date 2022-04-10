@@ -14,7 +14,8 @@ public class busJourney
 	        validData = new ArrayList<>();
 	        readStopTimes(stop_times);
 	    }
-	    public void readStopTimes(File stop_times) throws IOException {
+	    public void readStopTimes(File stop_times) throws IOException 
+	    {
 	        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(stop_times))) 
 	        {
 				String string;
@@ -62,7 +63,7 @@ public class busJourney
 				            {
 				                shape_dist_traveled = Float.parseFloat(line[8]);
 				            }
-				            if (isTimeValid(arrival_time) && isTimeValid(departure_time)) 
+				            if (timeValidOrNot(arrival_time) && timeValidOrNot(departure_time)) 
 				            {
 				                validData.add(new busJourneyInfo(trip_id, arrival_time, departure_time, stop_id, stop_sequence, stop_headsign, pickup_type, drop_off_type, shape_dist_traveled));
 				            }
@@ -74,7 +75,8 @@ public class busJourney
 			}
 	    }
 
-	    public static boolean isTimeValid(String time) {
+	    public static boolean timeValidOrNot(String time) 
+	    {
 	        final int MAX_H = 23;
 	        final int MAX_MIN = 59;
 	        final int MAX_SEC = 59;

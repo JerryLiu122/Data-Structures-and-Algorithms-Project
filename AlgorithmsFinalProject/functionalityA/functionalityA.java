@@ -2,11 +2,12 @@ package functionalityA;
 import java.io.File;
 import java.util.ArrayList;
 
+
 public class functionalityA {
 	public static busStopConnect routes;
     public static busJourney journey;
 
-    public static void setupGraph(File stops, File stop_times, File transfers) throws Exception {
+    public static void setUpGraph(File stops, File stop_times, File transfers) throws Exception {
         System.out.println("Setting up Graph");
 
         routes = new busStopConnect(stops, transfers);
@@ -28,7 +29,7 @@ public class functionalityA {
 
     }
 
-    public static void printShortestPathInfo(int fromStopID, int toStopID) {
+    public static void printShortestPath(int fromStopID, int toStopID) {
         ArrayList<Integer> shortestPath = busStopConnect.getShortestPath(fromStopID, toStopID);
         double shortestCost = busStopConnect.getShortestPathCost();
 
@@ -61,10 +62,8 @@ public class functionalityA {
         }
     }
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-
 
 	}
 
