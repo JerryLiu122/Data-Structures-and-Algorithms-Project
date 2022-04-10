@@ -23,18 +23,5 @@ public class busJourneyInfo {
         this.shape_dist_traveled = shape_dist_traveled;
     }
 
-    public void printbusJourneyInfo() {
-        String label0 = "trip_id - ";
-        String label1 = " arrival_time - ";
-        String label2 = " departure_time - ";
-        String label3 = " stop_id - ";
-        String label4 = " stop_sequence - ";
-        String label5 = " stop_headsign - ";
-        String label6 = " pickup_type - ";
-        String label7 = " drop_off_type - ";
-        String label8 = " shape_dist_traveled - ";
-        System.out.println(label0 + trip_id + label1 + arrival_time + label2 + departure_time
-                + label3 + stop_id + label4 + stop_sequence + label5 + stop_headsign + label6
-                + pickup_type + label7 + drop_off_type + label8 + shape_dist_traveled);
-    }
+   
 }

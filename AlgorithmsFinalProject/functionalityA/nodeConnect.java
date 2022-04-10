@@ -8,7 +8,4 @@ public class nodeConnect {
         this.cost = cost;
     }
 
-    public void printNode(){
-        System.out.println("Stop id - "+stop_id+" Cost - "+cost);
-    }
 }

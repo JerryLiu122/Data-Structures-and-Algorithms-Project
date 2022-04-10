@@ -216,14 +216,5 @@ public class busStopConnect {
         return null;
     }
 
-    public ArrayList<busStop> getEnrouteStops(ArrayList<Integer> stopIDs){
-        ArrayList<busStop> enrouteStopDetails = new ArrayList<>();
-        System.out.println("Enroute Stops");
-        for(int stop:stopIDs){
-            busStop stopDetails = IdDetailsMap.get(stop);
-            System.out.println("stop_id - "+ stopDetails.busStopId+"\tstop_name - "+stopDetails.busStopName);
-            enrouteStopDetails.add(stopDetails);
-        }
-        return enrouteStopDetails;
-    }
+   
 }

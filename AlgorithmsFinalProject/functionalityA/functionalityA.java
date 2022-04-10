@@ -64,25 +64,7 @@ public class functionalityA {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		String stops_times_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/stop_times.txt";
-        File stop_times = new File(stops_times_path);
-
-        String stops_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/stops.txt";
-        File stops = new File(stops_path);
-
-        String transfers_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/transfers.txt";
-        File transfers = new File(transfers_path);
-
-        setupGraph(stops, stop_times, transfers);
-        
-        try (Scanner input = new Scanner(System.in)) {
-			System.out.println("Please enter the departure stop ID");
-			int fromStopID = input.nextInt();
-			System.out.println("Please enter the destination stop ID");
-			int toStopID = input.nextInt();
-
-			printShortestPathInfo(fromStopID, toStopID);
-		}
+		
 
 
 	}

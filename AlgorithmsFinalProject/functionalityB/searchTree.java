@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class searchTree 
 {
-	private node root;
-    private ArrayList<String> al;
+	public node root;
+    public ArrayList<String> al;
 
 
     public searchTree() 
@@ -61,7 +61,7 @@ public class searchTree
         delete(root, word.toCharArray(), 0);
     }
 
-    private void delete(node node, char[] word, int ptr) 
+    public void delete(node node, char[] word, int ptr) 
     {
         if (node == null)
         {
@@ -112,7 +112,7 @@ public class searchTree
         return sb.toString().split("\n");
     }
 
-    private node crawlToPrefix(node node, char[] word, int ptr) 
+    public node crawlToPrefix(node node, char[] word, int ptr) 
     {
         if (node == null) 
         {
@@ -139,7 +139,7 @@ public class searchTree
         }
     }
 
-    private void findAll(node node, String str, StringBuilder sb, String pattern) 
+    public void findAll(node node, String str, StringBuilder sb, String pattern) 
     {
         if (node != null) 
         {

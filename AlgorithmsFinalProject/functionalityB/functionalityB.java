@@ -38,7 +38,7 @@ public class functionalityB {
             String str = end.concat(" ").concat(begin);
             return makeSence(str);
         }
-        if (tempFlagStop.equals("FLAGSTOP")) 
+        if (tempFlagStop.equals("FLAG STOP")) 
         {
             String end = stopName.substring(stopLength + 1);
             String begin = stopName.substring(0, stopLength);
@@ -86,9 +86,6 @@ public class functionalityB {
                 stopNamesUniques.add(x);
             }
         }
-
-        System.out.println("Stops count - " + stopNames.size());
-        System.out.println("Unique Stops count - " + stopNamesUniques.size());
     }
 
     public static Map<String, ArrayList<String>> createDetails(File filename) throws IOException 
@@ -122,17 +119,7 @@ public class functionalityB {
 	public static void main(String[] args) throws IOException 
 	{
 		// TODO Auto-generated method stub
-		String stops_path = "/Users/lzy/eclipse-workspace/Algorithm finial project/input files/stops.txt";
-        File stops = new File(stops_path);
-        ArrayList<String> stopNames = getStop(stops);
-        insertStopName(stopNames);
-        String[] HastingsSearch = STOP_NAME.search("HASTINGS");
-        for(String x: HastingsSearch) 
-        {
-            System.out.println(x);
-            System.out.println("Length"+HastingsSearch.length);
-
-        }
+		
     }
 
 	

@@ -27,20 +27,4 @@ public class busStop {
         this.parentStation = parentStation;
     }
 
-    public void printStopDetails() {
-        String label0 = "busStopId - ";
-        String label1 = ", busStopCode - ";
-        String label2 = ", busStopName - ";
-        String label3 = ", busStopDesc - ";
-        String label4 = ", busStopLat - ";
-        String label5 = ", busStopLon - ";
-        String label6 = ", zoneId - ";
-        String label7 = ", busStopUrl - ";
-        String label8 = ", locationType - ";
-        String label9 = ", parentStation - ";
-
-        System.out.println(label0 + busStopId + label1 + busStopCode + label2 + busStopName + label3
-                + busStopDesc + label4 + busStopLat + label5 + busStopLon + label6 + zoneId + label7
-                + busStopUrl + label8 + locationType + label9 + parentStation);
-    }
 }
